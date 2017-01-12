@@ -13,10 +13,18 @@ public class TesteJPA {
 		double inicio = System.currentTimeMillis();
 		
 		Conta conta = new Conta();
+		/*
 		conta.setTitular("Jao");
 		conta.setBanco("Itaú");
 		conta.setNumero("556987");
 		conta.setAgencia("0240");
+		*/
+		
+		conta.setId(16);
+		conta.setBanco("104 - CAIXA ECONOMICA FEDERAL");
+		conta.setNumero("98654-4");
+		conta.setAgencia("4321");
+		conta.setTitular("Alexandre Fonseca");
 		
 		/*
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("financas");
@@ -29,7 +37,8 @@ public class TesteJPA {
 		
 		manager.getTransaction().begin();
 		
-		manager.persist(conta);
+		manager.merge(conta); // Merge é usado para quando o objeto está desatachado e precisa ser alterado.
+		//manager.persist(conta);
 		
 		manager.getTransaction().commit();
 		
